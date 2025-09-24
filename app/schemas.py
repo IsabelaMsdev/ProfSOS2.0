@@ -1,16 +1,14 @@
 from pydantic import BaseModel
-from datetime import datetime
 
-class SOSBase(BaseModel):
+class TaskBase(BaseModel):
     title: str
-    description: str
+    description: str | None = None
 
-class SOSCreate(SOSBase):
+class TaskCreate(TaskBase):
     pass
 
-class SOS(SOSBase):
+class TaskRead(TaskBase):
     id: int
-    created_at: datetime
     user_id: int
 
     class Config:
