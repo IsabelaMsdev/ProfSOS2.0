@@ -1,22 +1,101 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-nav {
-  background-color: #4caf50;
-  padding: 10px;
-  color: white;
+.app-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-right: 10px;
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-nav a:hover {
-  text-decoration: underline;
+.card h2, .card h3, .card h4 {
+  margin: 0;
+  color: #007BFF;
+}
+
+.btn {
+  padding: 8px 16px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.card-app .historico-ultimo {
+  margin-top: 12px;
+}
+.card-app .status.resolvido {
+  color: green;
+  font-weight: bold;
+}
+
+.card-registrar .categorias {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-registrar .categorias li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 6px 0;
+  transition: 0.2s;
+}
+.card-registrar .categorias li:hover {
+  color: #0056b3;
+}
+.card-registrar .icone {
+  margin-right: 8px;
+}
+
+.card-status .etapas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-status .etapas li {
+  margin: 6px 0;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-historico ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-historico li {
+  margin: 6px 0;
+}
+
+@media (max-width: 1100px) {
+  .app-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
