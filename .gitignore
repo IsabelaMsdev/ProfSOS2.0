@@ -21,4 +21,4 @@ build/
 Thumbs.db
 
 # MongoDB Tests
-/mongoDbTests
+/backend/mongoDbTests/
