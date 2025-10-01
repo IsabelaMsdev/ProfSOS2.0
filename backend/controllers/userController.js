@@ -1,5 +1,125 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwtUtils = require('../utils/jwt');
+
+exports.loginUsuario = async (req, res) => {
+  try {
+    const { email, senha } = req.body;
+
+    const usuario = await User.findOne({ email });
+    if (!usuario) {
+      return res.status(400).json({ message: 'Credenciais inválidas' });
+    }
+
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
+    if (!senhaValida) {
+      return res.status(400).json({ message: 'Credenciais inválidas' });
+    }
+
+    const accessToken = jwtUtils.generateAccessToken(usuario);
+    const refreshToken = jwtUtils.generateRefreshToken(usuario);
+
+    // Salvar refresh token no banco
+    usuario.refreshTokens.push(refreshToken);
+    await usuario.save();
+
+    const usuarioResposta = usuario.toObject();
+    delete usuarioResposta.senha;
+
+    res.json({
+      message: 'Login bem-sucedido',
+      accessToken,
+      refreshToken,
+      usuario: usuarioResposta
+    });
+  } catch (error) {
+    console.error('Erro no login:', error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Refresh token endpoint
+exports.refreshToken = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken) {
+      return res.status(401).json({ message: 'Refresh token requerido' });
+    }
+
+    // Verificar se o refresh token é válido
+    const decoded = jwtUtils.verifyRefreshToken(refreshToken);
+    
+    // Buscar usuário e verificar se o refresh token existe
+    const usuario = await User.findById(decoded.id);
+    if (!usuario || !usuario.refreshTokens.includes(refreshToken)) {
+      return res.status(403).json({ message: 'Refresh token inválido' });
+    }
+
+    if (!usuario.ativo) {
+      return res.status(403).json({ message: 'Usuário inativo' });
+    }
+
+    // Gerar novo access token
+    const newAccessToken = jwtUtils.generateAccessToken(usuario);
+    
+    // Opcionalmente, gerar novo refresh token e remover o antigo
+    const newRefreshToken = jwtUtils.generateRefreshToken(usuario);
+    
+    // Remover o refresh token antigo e adicionar o novo
+    usuario.refreshTokens = usuario.refreshTokens.filter(token => token !== refreshToken);
+    usuario.refreshTokens.push(newRefreshToken);
+    await usuario.save();
+
+    res.json({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken
+    });
+  } catch (error) {
+    console.error('Erro no refresh token:', error);
+    if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
+      return res.status(403).json({ message: 'Refresh token inválido ou expirado' });
+    }
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Logout endpoint
+exports.logoutUsuario = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    const userId = req.user?.id; // Vem do middleware de autenticação
+
+    if (refreshToken && userId) {
+      // Remover o refresh token específico
+      await User.findByIdAndUpdate(userId, {
+        $pull: { refreshTokens: refreshToken }
+      });
+    }
+
+    res.json({ message: 'Logout realizado com sucesso' });
+  } catch (error) {
+    console.error('Erro no logout:', error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Logout de todos os dispositivos
+exports.logoutTodosDispositivos = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Remover todos os refresh tokens
+    await User.findByIdAndUpdate(userId, {
+      refreshTokens: []
+    });
+
+    res.json({ message: 'Logout realizado em todos os dispositivos' });
+  } catch (error) {
+    console.error('Erro no logout global:', error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 // Registrar novo usuário
 exports.registrarUsuario = async (req, res) => {

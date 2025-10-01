@@ -1,16 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/userController');
+const { authenticateToken, requireRole, requireOwnershipOrAdmin } = require('../middleware/auth');
 
-// Rotas de usuário
+// Rotas públicas (não requerem autenticação)
 router.post('/registrar', controller.registrarUsuario);           // Registrar novo usuário
-router.get('/', controller.listarUsuarios);                      // Listar usuários (com filtros opcionais)
-router.get('/:id', controller.buscarUsuarioPorId);               // Buscar usuário por ID
-router.put('/:id', controller.atualizarUsuario);                 // Atualizar usuário
-router.patch('/:id/desativar', controller.desativarUsuario);     // Desativar usuário
-router.patch('/:id/reativar', controller.reativarUsuario);       // Reativar usuário
+router.post('/login', controller.loginUsuario);                   // Login
+router.post('/refresh-token', controller.refreshToken);           // Refresh token
 
-// Rotas específicas para suporte
-router.get('/suporte/especialidade/:especialidade', controller.listarSuportePorEspecialidade); // Listar suporte por especialidade
+// Rotas protegidas (requerem autenticação)
+router.post('/logout', authenticateToken, controller.logoutUsuario);                    // Logout
+router.post('/logout-all', authenticateToken, controller.logoutTodosDispositivos);     // Logout de todos os dispositivos
+
+// Rotas específicas para suporte (DEVEM vir ANTES das rotas com :id)
+router.get('/suporte/especialidade/:especialidade', authenticateToken, controller.listarSuportePorEspecialidade); // Listar suporte por especialidade
+
+// Rotas de usuário protegidas
+router.get('/', authenticateToken, requireRole('suporte'), controller.listarUsuarios);                      // Listar usuários (apenas suporte)
+router.get('/:id', authenticateToken, requireOwnershipOrAdmin, controller.buscarUsuarioPorId);               // Buscar usuário por ID (próprio ou admin)
+router.put('/:id', authenticateToken, requireOwnershipOrAdmin, controller.atualizarUsuario);                 // Atualizar usuário (próprio ou admin)
+router.patch('/:id/desativar', authenticateToken, requireRole('suporte'), controller.desativarUsuario);     // Desativar usuário (apenas suporte)
+router.patch('/:id/reativar', authenticateToken, requireRole('suporte'), controller.reativarUsuario);       // Reativar usuário (apenas suporte)
 
 module.exports = router;

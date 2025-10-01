@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema(
     departamento: { type: String },
     telefone: { type: String },
     ativo: { type: Boolean, default: true },
+    // Campos específicos para acadêmicos
+    curso: { type: String },
+    matricula: { type: String },
     // Campos específicos para usuários de suporte
     nivel_suporte: {
       type: String,
@@ -26,6 +29,10 @@ const UserSchema = new mongoose.Schema(
     especialidades: [{
       type: String,
       enum: ['hardware', 'software', 'rede', 'sistemas', 'audiovisual', 'outros']
+    }],
+    // Refresh tokens para autenticação JWT
+    refreshTokens: [{
+      type: String
     }]
   },
   { timestamps: true }

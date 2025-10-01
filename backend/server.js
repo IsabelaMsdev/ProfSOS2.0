@@ -14,9 +14,20 @@ if (!process.env.MONGO_URI) {
   process.exit(1);
 }
 
+if (!process.env.JWT_SECRET) {
+  console.error('❌ ERRO: JWT_SECRET não está definida no arquivo .env');
+  process.exit(1);
+}
+
+if (!process.env.JWT_REFRESH_SECRET) {
+  console.error('❌ ERRO: JWT_REFRESH_SECRET não está definida no arquivo .env');
+  process.exit(1);
+}
+
 // Middlewares
 app.use(cors()); // Permitir requisições do frontend
-app.use(express.json()); // Parse do body JSON
+app.use(express.json({ limit: '10mb' })); // Parse do body JSON com limite
+app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Parse de form data
 
 // Rota de health check
 app.get('/health', (req, res) => {
