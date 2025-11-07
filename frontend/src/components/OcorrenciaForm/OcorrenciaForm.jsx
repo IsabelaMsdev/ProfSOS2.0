@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { criarOcorrencia } from '../services/api';
+import { criarOcorrencia } from '../../services/api';
 import './OcorrenciaF.css';
 
 export default function OcorrenciaForm({ onSuccess }) {

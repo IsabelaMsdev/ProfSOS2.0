@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { listarOcorrencias, atualizarOcorrencia, deletarOcorrencia } from '../services/api';
+import { listarOcorrencias, atualizarOcorrencia, deletarOcorrencia } from '../../services/api';
 import './OcorrenciaL.css';
 
 export default function OcorrenciaList() {

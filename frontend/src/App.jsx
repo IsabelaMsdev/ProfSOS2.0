@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import CartaoApp from './components/CartaoApp';
-import CartaoRegistrar from './components/CartaoRegistrar';
-import CartaoStatus from './components/CartaoStatus';
-import CartaoHistorico from './components/CartaoHistorico';
+import CartaoApp from './components/OcorrenciaForm/OcorrenciaForm';
+import CartaoRegistrar from './components/OcorrenciaList/OcorrenciaList';
+import CartaoStatus from './components/OcorrenciaList/OcorrenciaList';
+import CartaoHistorico from './components/OcorrenciaList/OcorrenciaList';
 
 function App() {
   return (
