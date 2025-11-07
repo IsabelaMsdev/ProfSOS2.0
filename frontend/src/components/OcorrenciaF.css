@@ -1,40 +1,81 @@
+/* NOVO CONTEÚDO para OcorrenciaF.css - Estilo unificado e moderno */
+
 form {
-  background-color: white;
-  padding: 20px;
-  margin: 20px auto;
-  width: 400px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    background-color: #ffffff;
+    padding: 30px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 450px; /* Alinhado ao Login.css e Registrar.css */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.6s ease-in-out;
 }
 
+form h2 {
+    color: #1e40af;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Unificação dos inputs, selects e textareas */
 form input,
 form select,
-form button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+form textarea { 
+    display: block;
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db; /* Borda mais suave */
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-form button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Foco em azul */
 }
 
-form button:disabled {
-  background-color: #9e9e9e;
-  cursor: not-allowed;
+form textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
+/* Botão Principal - Verde como cor de ação principal */
+.btn-submit {
+    background: linear-gradient(135deg, #10b981, #059669); 
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-submit:disabled {
+    background-color: #a7f3d0;
+    cursor: not-allowed;
+}
+
+/* Estilo para Mensagens/Alertas (Sucesso/Erro) */
 .alert {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  text-align: center;
+    background-color: #d1fae5; 
+    color: #065f46; 
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
 }

@@ -1,0 +1,164 @@
+/* Registrar.css - Novo Design Profissional */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* --------------------- CONTAINER GERAL --------------------- */
+.registrar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ff, #f4f7ff); /* Fundo suave */
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* --------------------- CARD CENTRAL --------------------- */
+.registrar-card {
+  background: #ffffff;
+  padding: 3rem;
+  width: 650px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: left;
+  animation: fadeIn 0.6s ease-in-out;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.registrar-card h2 {
+  margin-bottom: 1.8rem;
+  color: #1e40af;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --------------------- FORMULÁRIO --------------------- */
+.registrar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.registrar-form label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.registrar-form input[type="text"],
+.registrar-form select,
+.registrar-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f9fafb;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.registrar-form input:focus,
+.registrar-form select:focus,
+.registrar-form textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  background-color: #ffffff;
+}
+
+.registrar-form textarea {
+  min-height: 120px;
+}
+
+/* Botão de Envio (Verde Ação) */
+.btn-enviar {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-enviar:hover {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+.btn-enviar:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* --------------------- CARD DE SUCESSO --------------------- */
+.success-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.success-card h3 {
+    color: #10b981;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.success-card p {
+    color: #6b7280;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.success-card strong {
+    display: block;
+    font-size: 1.2rem;
+    color: #1f2937;
+    margin-bottom: 5px;
+}
+
+/* --------------------- BOTÃO FLUTUANTE (HOME) --------------------- */
+.btn-float-home {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: #ffffff;
+  border: 2px solid #1e40af;
+  color: #1e40af;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.btn-float-home:hover {
+  background-color: #1e40af;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* --------------------- ANIMAÇÕES --------------------- */
+.fade-enter { opacity: 0; transform: translateY(15px); }
+.fade-enter-active { opacity: 1; transform: translateY(0); transition: all 300ms ease; }
+.fade-exit { opacity: 1; transform: translateY(0); }
+.fade-exit-active { opacity: 0; transform: translateY(-15px); transition: all 300ms ease; }

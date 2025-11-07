@@ -1,0 +1,152 @@
+/* Tutorial.css - Novo Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* ------------------- BASE ------------------- */
+.tutorial-page {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Cor de fundo suave */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ------------------- CARD ------------------- */
+.tutorial-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  width: 450px;
+  max-width: 100%;
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+.tutorial-card h1 {
+  color: #1e40af;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.tutorial-card h2 {
+  color: #2563eb;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 15px 0 10px 0;
+}
+
+.tutorial-card p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* ------------------- PROGRESSO ------------------- */
+.step-info {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* Indicadores de bolinha */
+.steps-badges {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.steps-badges .badge {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: background 0.3s ease;
+}
+
+.steps-badges .badge.active {
+  background: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.3);
+}
+
+/* Barra de progresso */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #10b981; /* Verde sutil para progresso */
+  width: 0%;
+  transition: width 0.4s ease-out;
+}
+
+/* ------------------- BOTÕES ------------------- */
+.tutorial-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.tutorial-buttons button {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+.tutorial-buttons .btn-prev {
+    background: #e5e7eb;
+    color: #4b5563;
+    box-shadow: none;
+}
+
+.tutorial-buttons .btn-prev:hover {
+    background: #d1d5db;
+    transform: translateY(-2px);
+}
+
+.tutorial-buttons .btn-next {
+    background: linear-gradient(135deg, #10b981, #059669); /* Verde ação */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.tutorial-buttons .btn-next:hover {
+    background: linear-gradient(135deg, #059669, #10b981);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+.tutorial-buttons button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ------------------- ANIMAÇÕES ------------------- */
+.fade-enter { opacity: 0; transform: translateY(10px); }
+.fade-enter-active { opacity: 1; transform: translateY(0); transition: all 300ms ease; }
+.fade-exit { opacity: 1; transform: translateY(0); }
+.fade-exit-active { opacity: 0; transform: translateY(-10px); transition: all 300ms ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

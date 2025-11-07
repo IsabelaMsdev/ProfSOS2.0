@@ -1,0 +1,110 @@
+/* Login.css - Novo Design Profissional */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #e0e7ff); /* Fundo suave */
+  font-family: 'Inter', sans-serif;
+}
+
+.login-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 420px;
+  max-width: 90%;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.login-card h1 {
+  color: #1e40af; /* Azul forte */
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Campos de entrada */
+.login-card input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f9fafb;
+}
+
+.login-card input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  background-color: #ffffff;
+}
+
+/* Botão Principal */
+.login-card button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #1e40af, #2563eb); /* Azul Gradiente */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+}
+
+.login-card button[type="submit"]:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.6);
+}
+
+/* Botão Secundário (Tutorial) */
+.login-card .btn-secondary {
+    background: #f3f4f6;
+    color: #4b5563;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    width: 100%;
+    box-shadow: none;
+}
+
+.login-card .btn-secondary:hover {
+    background: #e5e7eb;
+    transform: none;
+}
+
+/* Alerta de erro */
+.error-alert {
+  background-color: #fee2e2; /* Vermelho claro */
+  color: #b91c1c; /* Vermelho escuro */
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #fca5a5;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease, padding 0.4s ease;
+}
+
+.error-alert.show {
+  opacity: 1;
+  max-height: 100px;
+  padding: 12px;
+}

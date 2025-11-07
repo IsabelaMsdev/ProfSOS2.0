@@ -1,0 +1,39 @@
+.chamado-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.chamado-info strong {
+  font-weight: 600;
+}
+
+.chamado-info span {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status.pendente { background: #ffe6e6; color: #e53935; }
+.status.andamento { background: #fff7cc; color: #f59e0b; }
+.status.resolvido { background: #e6ffed; color: #2e7d32; }
+
+.ver-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.ver-link:hover {
+  text-decoration: underline;
+}

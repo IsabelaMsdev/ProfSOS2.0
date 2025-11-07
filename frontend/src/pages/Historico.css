@@ -1,0 +1,241 @@
+/* Fonte moderna e neutra */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.historico-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e8f0fe, #f4f7ff);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222f4a;
+}
+
+.historico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1120px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.historico-header h2 {
+  font-size: 2.4rem;
+  color: #1e40af;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.novo-chamado {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  transition: background 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
+  user-select: none;
+}
+
+.novo-chamado:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.45);
+}
+
+/* Wrapper para permitir scroll horizontal */
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  max-width: 1120px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 12px 20px;
+}
+
+/* Tabela com bordas arredondadas e espaçamento maior */
+.historico-tabela {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 14px;
+  font-size: 1.05rem;
+  min-width: 720px;
+  color: #334155;
+}
+
+.historico-tabela th {
+  padding: 20px 24px;
+  text-align: left;
+  font-weight: 700;
+  color: #334155;
+  border-bottom: 3px solid #e2e8f0;
+  background-color: #f1f5f9;
+  user-select: none;
+}
+
+.historico-tabela td {
+  padding: 18px 24px;
+  background: #fefefe;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  vertical-align: middle;
+  transition: background-color 0.3s ease;
+}
+
+.historico-tabela tr:hover td {
+  background: #dbeafe;
+  cursor: pointer;
+}
+
+/* Chamado Info - organizando melhor o texto */
+.chamado-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chamado-info strong {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 1.1rem;
+}
+
+.chamado-info span {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Status badges mais suaves, vibrantes e com sombra */
+.status {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  min-width: 120px;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 8px transparent;
+}
+
+.status.pendente {
+  background: #fee2e2;
+  color: #b91c1c;
+  box-shadow: 0 0 10px rgba(185, 28, 28, 0.3);
+}
+
+.status.andamento {
+  background: #fff7cd;
+  color: #ca8a04;
+  box-shadow: 0 0 10px rgba(202, 138, 4, 0.3);
+}
+
+.status.resolvido {
+  background: #dcfce7;
+  color: #15803d;
+  box-shadow: 0 0 10px rgba(21, 128, 61, 0.3);
+}
+
+/* Botão ver mais elegante */
+.ver-link {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+  transition: background 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
+  user-select: none;
+}
+
+.ver-link:hover {
+  background: linear-gradient(135deg, #1e40af, #1c3aa6);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.5);
+}
+
+/* Botão voltar - estilo consistente */
+.btn-voltar {
+  margin: 36px auto 0;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+  max-width: 220px;
+  display: block;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+  transition: background 0.35s ease, transform 0.3s ease, box-shadow 0.35s ease;
+  user-select: none;
+}
+
+.btn-voltar:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1341a3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(29, 78, 216, 0.55);
+}
+
+/* Responsividade */
+
+/* Tablet e menores */
+@media (max-width: 768px) {
+  .historico-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .novo-chamado {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tabela-wrapper {
+    max-width: 100%;
+    padding: 8px 12px;
+  }
+
+  .historico-tabela {
+    min-width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .historico-tabela th,
+  .historico-tabela td {
+    padding: 14px 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-voltar,
+  .ver-link,
+  .novo-chamado {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .status {
+    min-width: 100px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}

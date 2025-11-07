@@ -1,19 +1,41 @@
-import React from 'react';
-import './App.css';
-import CartaoApp from './components/CartaoApp';
-import CartaoRegistrar from './components/CartaoRegistrar';
-import CartaoStatus from './components/CartaoStatus';
-import CartaoHistorico from './components/CartaoHistorico';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
-function App() {
+// Componentes
+import PageTransition from "./components/PageTransition";
+
+// Páginas
+import AppHome from "./pages/AppHome";
+import Registrar from "./pages/Registrar";
+import Status from "./pages/Status";
+import Historico from "./pages/Historico";
+import Login from "./pages/Login";
+import Tutorial from "./pages/Tutorial";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
   return (
-    <div className="app-container">
-      <CartaoApp />
-      <CartaoRegistrar />
-      <CartaoStatus />
-      <CartaoHistorico />
-    </div>
+    <PageTransition location={location}>
+      <Routes location={location}>
+        {/* Primeiro tutorial, depois login */}
+        <Route path="/" element={<Tutorial />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Home e navegação interna */}
+        <Route path="/home" element={<AppHome />} />
+        <Route path="/registrar" element={<Registrar />} />
+        <Route path="/status" element={<Status />} />
+        <Route path="/historico" element={<Historico />} />
+      </Routes>
+    </PageTransition>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AnimatedRoutes />
+    </Router>
+  );
+}

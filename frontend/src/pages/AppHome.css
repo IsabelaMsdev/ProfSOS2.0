@@ -1,0 +1,226 @@
+/* Importação de fontes (se não estiver em App.css) */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); */
+/* Usando o Inter/Poppins definido anteriormente */
+
+:root {
+  --color-primary: #1E40AF; 
+  --color-primary-light: #3B82F6;
+  --color-text: #1E293B; 
+  --color-background-darker: #F1F5F9; 
+  --color-white: #ffffff;
+}
+
+/* Container geral - sidebar fixa + conteúdo flexível */
+.home-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  background: var(--color-background-darker);
+  color: var(--color-text);
+}
+
+/* --------------------- SIDEBAR --------------------- */
+.sidebar {
+  width: 250px; /* Levemente mais larga */
+  background: var(--color-primary); /* Fundo com a cor primária */
+  padding: 30px 20px;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: 30px; 
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15); /* Sombra mais marcada */
+  position: sticky; /* Sidebar fixa */
+  top: 0;
+  height: 100vh;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-white);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espaçamento entre botões */
+}
+
+/* Botões de Navegação */
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 12px 15px; /* Padding ajustado */
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-btn:hover,
+.sidebar-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.15); /* Efeito hover sutil */
+  outline: none;
+}
+
+/* Estado Ativo (página atual) */
+.sidebar-btn.active {
+    background: var(--color-primary-light); 
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: translateX(2px);
+}
+
+/* Botão de Sair/Logout */
+.logout-btn {
+    margin-top: auto; /* Empurra para o final */
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--color-white);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+/* --------------------- CONTEÚDO PRINCIPAL --------------------- */
+.main-content {
+  flex-grow: 1;
+  padding: 40px; /* Padding geral */
+  overflow-y: auto;
+}
+
+/* Cabeçalho principal */
+.main-content header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-primary);
+}
+
+.main-content header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-text-subtle);
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+/* Grid para cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* --------------------- CARDS INTERATIVOS --------------------- */
+.card {
+  background: var(--color-white);
+  padding: 32px 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra mais visível */
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  cursor: pointer; /* Indica que é clicável */
+  border-bottom: 4px solid transparent; /* Para um efeito sutil */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-8px); /* Elevação dramática */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  background: var(--color-white);
+  border-bottom-color: var(--color-primary-light); /* Destaque na borda */
+  outline: none;
+}
+
+.card-icon {
+    color: var(--color-primary-light);
+    margin-bottom: 15px;
+    /* Efeito de brilho no ícone */
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5)); 
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--color-text-subtle);
+}
+
+/* --------------------- RESPONSIVIDADE --------------------- */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row; /* Coloca itens lado a lado */
+    flex-wrap: wrap; /* Permite quebrar linha */
+    padding: 20px;
+    position: static;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo, .logout-btn {
+    display: none; /* Esconde logo e logout na versão mobile da sidebar */
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .sidebar-btn {
+    flex-grow: 1; /* Distribui o espaço entre os botões */
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .sidebar-btn .icon {
+    display: none; /* Esconde ícones pequenos no mobile para priorizar texto */
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr; /* Stack em telas pequenas */
+  }
+}
